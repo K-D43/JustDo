@@ -9,11 +9,11 @@ class NotesRepository(val dao: NotesDao) {
     suspend fun getAllNotes():LiveData<List<Notes>>{
         return dao.getNotes()
     }
-    suspend fun insertNotes(notes: Notes){
+    fun insertNotes(notes: Notes){
         dao.insertNotes(notes)
     }
 
-    suspend fun deleteNotes(notes: Notes){
+    fun deleteNotes(notes: Notes){
         dao.deleteNotes(notes)
     }
 

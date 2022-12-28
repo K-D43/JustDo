@@ -17,4 +17,7 @@
     <string name="notesContent">Ready to belong on personel choices and let them to perform some tasks that lets you to elaborate</string>
     <string name="date">28:12:22</string>
     <string name="Tag_delete">Are you sure want to delete\n This Note?</string>
+    <string name="high">High</string>
+    <string name="Medium">Medium</string>
+    <string name="low">Low</string>
 </resources>

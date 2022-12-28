@@ -1,5 +1,6 @@
 package com.example.justdo.Adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,7 @@ import com.example.justdo.R
 import com.example.justdo.databinding.ItemNotesBinding
 import com.example.justdo.viewModel.NotesViewModel
 
-class NotesAdapter(private val viewModel:NotesViewModel,val notesList: List<Notes>) :RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+class NotesAdapter(val context:Context,val notesList: List<Notes>) :RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
 
     class NotesViewHolder(val binding:ItemNotesBinding):RecyclerView.ViewHolder(binding.root) {
@@ -44,9 +45,6 @@ class NotesAdapter(private val viewModel:NotesViewModel,val notesList: List<Note
         }
         holder.binding.root.setOnClickListener{
 
-        }
-        holder.binding.btndelete.setOnClickListener{
-            viewModel.deleteNotes(data)
         }
     }
 
