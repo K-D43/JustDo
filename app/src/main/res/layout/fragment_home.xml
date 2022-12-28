@@ -33,6 +33,7 @@
                 android:background="@mipmap/ic_filter_round"/>
             
             <TextView
+                android:id="@+id/filterHigh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/high"
@@ -44,6 +45,7 @@
                 android:paddingVertical="10dp"
                 android:background="@drawable/btn_filter_shape"/>
             <TextView
+                android:id="@+id/filterMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Medium"
@@ -55,6 +57,7 @@
                 android:paddingVertical="10dp"
                 android:background="@drawable/btn_filter_shape"/>
             <TextView
+                android:id="@+id/filterLow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/low"

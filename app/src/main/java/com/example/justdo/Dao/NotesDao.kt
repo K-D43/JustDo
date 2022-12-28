@@ -14,6 +14,13 @@ interface NotesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNotes(notes: Notes)
 
+    @Query("SELECT * FROM Notes WHERE priority=3")
+    fun getHighNotes(): LiveData<List<Notes>>
+    @Query("SELECT * FROM Notes WHERE priority=1")
+    fun getMediumNotes():  LiveData<List<Notes>>
+    @Query("SELECT * FROM Notes WHERE priority=2")
+    fun getLowNotes():  LiveData<List<Notes>>
+
     @Delete
     fun deleteNotes(notes: Notes)
 

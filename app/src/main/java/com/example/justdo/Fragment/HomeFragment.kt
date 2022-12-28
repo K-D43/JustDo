@@ -35,6 +35,31 @@ class HomeFragment : Fragment() {
 
         }
 
+        binding.filter.setOnClickListener {
+            viewModel.getNotes().observe(viewLifecycleOwner) { notesList ->
+                binding.RView.layoutManager=GridLayoutManager(requireContext(),2)
+                binding.RView.adapter=NotesAdapter(requireContext(),notesList)
+            }
+        }
+        binding.filterHigh.setOnClickListener {
+            viewModel.getHighNotes().observe(viewLifecycleOwner) { notesList ->
+                binding.RView.layoutManager=GridLayoutManager(requireContext(),2)
+                binding.RView.adapter=NotesAdapter(requireContext(),notesList)
+            }
+        }
+        binding.filterMedium.setOnClickListener {
+            viewModel.getMediumNotes().observe(viewLifecycleOwner) { notesList ->
+                binding.RView.layoutManager=GridLayoutManager(requireContext(),2)
+                binding.RView.adapter=NotesAdapter(requireContext(),notesList)
+            }
+        }
+        binding.filterLow.setOnClickListener {
+            viewModel.getLowNotes().observe(viewLifecycleOwner) { notesList ->
+                binding.RView.layoutManager=GridLayoutManager(requireContext(),2)
+                binding.RView.adapter=NotesAdapter(requireContext(),notesList)
+            }
+        }
+
 
 
         binding.btnAddNotes.setOnClickListener {
