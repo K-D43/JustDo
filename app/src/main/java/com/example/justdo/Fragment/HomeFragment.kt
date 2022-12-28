@@ -60,8 +60,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-
-
         binding.btnAddNotes.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_homeFragment2_to_createFragment)
         }
