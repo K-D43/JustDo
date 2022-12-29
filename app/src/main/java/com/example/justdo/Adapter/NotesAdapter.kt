@@ -3,6 +3,7 @@ package com.example.justdo.Adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.justdo.Model.Notes
 import com.example.justdo.R
@@ -44,7 +45,7 @@ class NotesAdapter(val context:Context,val notesList: List<Notes>) :RecyclerView
             }
         }
         holder.binding.root.setOnClickListener{
-
+            Navigation.findNavController(it!!).navigate(R.id.action_homeFragment2_to_editFragment)
         }
     }
 

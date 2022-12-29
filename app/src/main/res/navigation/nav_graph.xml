@@ -25,7 +25,9 @@
         <action
             android:id="@+id/action_createFragment_to_homeFragment2"
             app:destination="@id/homeFragment2"
-            app:enterAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/homeFragment2"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -34,6 +36,8 @@
         tools:layout="@layout/fragment_edit" >
         <action
             android:id="@+id/action_editFragment_to_homeFragment2"
-            app:destination="@id/homeFragment2" />
+            app:destination="@id/homeFragment2"
+            app:popUpTo="@id/homeFragment2"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
