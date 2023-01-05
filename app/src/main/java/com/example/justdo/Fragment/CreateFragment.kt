@@ -29,11 +29,12 @@ class CreateFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding= FragmentCreateBinding.inflate(inflater,container,false)
-        binding.pgreen.setImageResource(R.drawable.ic_done)
 
         binding.btnSaveNotes.setOnClickListener{
             createNotes(it)
         }
+        binding.pgreen.setImageResource(R.drawable.ic_done)
+
 
         binding.pgreen.setOnClickListener{
             priority="1"

@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.justdo.Adapter.NotesAdapter
+import com.example.justdo.Model.Notes
 import com.example.justdo.R
 import com.example.justdo.databinding.FragmentHomeBinding
 import com.example.justdo.viewModel.NotesViewModel
@@ -38,25 +39,25 @@ class HomeFragment : Fragment() {
         binding.filter.setOnClickListener {
             viewModel.getNotes().observe(viewLifecycleOwner) { notesList ->
                 binding.RView.layoutManager=GridLayoutManager(requireContext(),2)
-                binding.RView.adapter=NotesAdapter(requireContext(),notesList)
+                binding.RView.adapter=NotesAdapter(requireContext(), notesList)
             }
         }
         binding.filterHigh.setOnClickListener {
             viewModel.getHighNotes().observe(viewLifecycleOwner) { notesList ->
                 binding.RView.layoutManager=GridLayoutManager(requireContext(),2)
-                binding.RView.adapter=NotesAdapter(requireContext(),notesList)
+                binding.RView.adapter=NotesAdapter(requireContext(), notesList)
             }
         }
         binding.filterMedium.setOnClickListener {
             viewModel.getMediumNotes().observe(viewLifecycleOwner) { notesList ->
                 binding.RView.layoutManager=GridLayoutManager(requireContext(),2)
-                binding.RView.adapter=NotesAdapter(requireContext(),notesList)
+                binding.RView.adapter=NotesAdapter(requireContext(), notesList)
             }
         }
         binding.filterLow.setOnClickListener {
             viewModel.getLowNotes().observe(viewLifecycleOwner) { notesList ->
                 binding.RView.layoutManager=GridLayoutManager(requireContext(),2)
-                binding.RView.adapter=NotesAdapter(requireContext(),notesList)
+                binding.RView.adapter=NotesAdapter(requireContext(), notesList)
             }
         }
 
@@ -64,5 +65,9 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.action_homeFragment2_to_createFragment)
         }
         return binding.root
+    }
+
+    private fun onclickedNotes(notesItem:Notes) {
+
     }
 }

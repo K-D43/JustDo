@@ -1,13 +1,12 @@
 package com.example.justdo.Fragment
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.example.justdo.Model.Notes
 import com.example.justdo.R
 import com.example.justdo.databinding.FragmentEditBinding
@@ -17,21 +16,28 @@ import java.util.*
 
 class EditFragment : Fragment() {
 
+    val oldnotes by navArgs<EditFragmentArgs>()
     lateinit var binding: FragmentEditBinding
-    var priority:String = "1"
-    val viewModel: NotesViewModel by viewModels()
+    var priority:String="1"
+    val viewModel:NotesViewModel by viewModels()
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        binding= FragmentEditBinding.inflate(inflater,container,false)
+        binding = FragmentEditBinding.inflate(inflater, container, false)
 
-        binding.pgreen.setImageResource(R.drawable.ic_done)
+        binding.edittile.setText(oldnotes.data.title)
+        binding.editsubtitle.setText(oldnotes.data.subTitle)
+        binding.notes.setText(oldnotes.data.notes)
 
         binding.btnSaveNotes.setOnClickListener{
-            createNotes(it)
+            updateNotes(it)
         }
+        binding.pgreen.setImageResource(R.drawable.ic_done)
+
 
         binding.pgreen.setOnClickListener{
             priority="1"
@@ -53,12 +59,29 @@ class EditFragment : Fragment() {
             binding.pgreen.setImageResource(0)
             binding.pyellow.setImageResource(0)
         }
+        when(oldnotes.data.priority){
+            "1"->{
+                priority="1"
+                binding.pgreen.setImageResource(R.drawable.ic_done)
+                binding.pred.setImageResource(0)
+                binding.pyellow.setImageResource(0)            }
+            "2"->{
+                priority="2"
+                binding.pyellow.setImageResource(R.drawable.ic_done)
+                binding.pgreen.setImageResource(0)
+                binding.pred.setImageResource(0)            }
+            "3"->{
+                priority="3"
+                binding.pred.setImageResource(R.drawable.ic_done)
+                binding.pgreen.setImageResource(0)
+                binding.pyellow.setImageResource(0)            }
+        }
 
 
         return binding.root
     }
 
-    private fun createNotes(it: View?) {
+    private fun updateNotes(it: View?) {
         val edttitle=binding.edittile.text.toString()
         val edtsubTitle=binding.editsubtitle.text.toString()
         val edtnotes=binding.notes.text.toString()
@@ -66,7 +89,7 @@ class EditFragment : Fragment() {
         val d= Date()
         val notesDate:CharSequence=android.text.format.DateFormat.format("MMMM d, yyyy ",d.time)
 //        Log.e("tag","createNotes $s")
-        val data= Notes(null,
+        val data= Notes(oldnotes.data.id,
             title = edttitle,
             subTitle = edtsubTitle,
             notes = edtnotes,
@@ -75,10 +98,15 @@ class EditFragment : Fragment() {
         )
         viewModel.updateNotes(data)
 
-        Toast.makeText(requireContext(),"Data Updated",Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(),"Data Updated Successfully",Toast.LENGTH_SHORT).show()
 
         Navigation.findNavController(it!!).navigate(R.id.action_editFragment_to_homeFragment2)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
 }
