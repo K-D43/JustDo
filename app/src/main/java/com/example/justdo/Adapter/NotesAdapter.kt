@@ -9,7 +9,7 @@ import com.example.justdo.Fragment.HomeFragmentDirections
 import com.example.justdo.Model.Notes
 import com.example.justdo.R
 import com.example.justdo.databinding.ItemNotesBinding
-
+// starting of main class
 class NotesAdapter(val context: Context, val notesList: List<Notes>) :RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
 
